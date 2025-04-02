@@ -1,7 +1,7 @@
-package main.java.com.franquiciasApi.franquicias.services;
+package com.franquiciasApi.franquicias.services;
 
-import com.example.demo.model.SucursalModel;
-import com.example.demo.repository.ISucursalRepository;
+import com.franquiciasApi.franquicias.models.SucursalModel;
+import com.franquiciasApi.franquicias.repositories.ISucursalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

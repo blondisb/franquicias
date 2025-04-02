@@ -1,4 +1,4 @@
-package main.java.com.franquiciasApi.franquicias.models;
+package com.franquiciasApi.franquicias.models;
 import jakarta.persistence.*;
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package main.java.com.franquiciasApi.franquicias.controllers;
+package com.franquiciasApi.franquicias.controllers;
 
-import com.example.demo.model.FranquiciaModel;
-import com.example.demo.service.FranquiciaService;
+import com.franquiciasApi.franquicias.models.FranquiciaModel;
+import com.franquiciasApi.franquicias.services.FranquiciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

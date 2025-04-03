@@ -1,4 +1,4 @@
-name: Build and Deploy to AWS Lightsail
+name: Build and Deploy to AWS ECS
 
 on:
   push:
@@ -30,32 +30,13 @@ jobs:
         ECR_REPOSITORY: blondis-prueba-tecnica
         IMAGE_TAG: latest
       run: |
-
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    - name: Deploy to AWS Lightsail
+    - name: Deploy to Amazon ECS
+      env:
+        ECS_CLUSTER: prueba-blondis-cluster
+        ECS_SERVICE: prueba-blondis-service
       run: |
-        aws lightsail create-container-service-deployment \
-          --service-name prueba-blondis-service \
-          --containers '{
-            "prueba-blondis": {
-              "image": "${{ steps.login-ecr.outputs.registry }}/blondis-prueba-tecnica:latest",
-              "environment": {
-                "DB_HOST": "${{ secrets.DB_HOST }}",
-                "DB_PORT": "3306",
-                "DB_NAME": "appdb", 
-                "DB_USER": "blondisbarrios",
-                "DB_PASSWORD": "${{ secrets.DB_PASSWORD }}"
-              },
-              "ports": {
-                "4000": "HTTPS"
-              }
-            }
-          }' \
-          --public-endpoint '{
-            "containerName": "prueba-blondis",
-            "containerPort": 4000
-          }'
+        aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment

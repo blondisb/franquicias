@@ -6,17 +6,15 @@ import org.springframework.data.relational.core.sql.In;
 
 import lombok.NonNull;
 
-@Table("sucursales") // Replace "products" with your actual table name
+@Table("sucursales") 
 public class SucursalesModel {
 
     @Id
-    private Integer idsucursales; // Ensure this matches your primary key column
+    private Integer idsucursales; 
     private String name;
 
     @NonNull
-    private Integer franquiciaid; // Foreign key to the franquicias table
-
-    // Getters and setters
+    private Integer franquiciaid; 
     public Integer getId() {
         return idsucursales;
     }

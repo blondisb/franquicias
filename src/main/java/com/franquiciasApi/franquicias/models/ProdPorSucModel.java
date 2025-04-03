@@ -5,11 +5,11 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import lombok.NonNull;
 
-@Table("productos_por_sucursal") // Replace "products" with your actual table name
+@Table("productos_por_sucursal")
 public class ProdPorSucModel {
 
     @Id
-    private Integer idproductos_por_sucursal; // Ensure this matches your primary key column
+    private Integer idproductos_por_sucursal;
 
     @NonNull
     private Integer idprod;
@@ -17,9 +17,8 @@ public class ProdPorSucModel {
     @NonNull
     private Integer idsuc;
 
-    private Integer stock; // Optional field, can be null
+    private Integer stock; 
 
-    // Getters and setters
     public Integer getId() {
         return idproductos_por_sucursal;
     }

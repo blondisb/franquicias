@@ -5,11 +5,10 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import com.franquiciasApi.franquicias.repositories.iProdPorSucRepository;
 import com.franquiciasApi.franquicias.repositories.iSucursalesRepository;
-import com.franquiciasApi.franquicias.models.ProdPorSucModel; // Import ProdPorSucModel class
+import com.franquiciasApi.franquicias.models.ProdPorSucModel;
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux; // Import Flux
-import reactor.core.publisher.Mono; // Import Mono
-
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono; 
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -58,10 +57,10 @@ public class ProdPorSucService {
     }
 
     public Flux<ProdPorSucModel> getMaxStockByFranquicia(int franquiciaId) {
-        return sucursalesRepository.findByFranquiciaid(franquiciaId) // Encuentra todas las sucursales de la franquicia
-                .flatMap(sucursal -> prodPorSucRepository.findByIdsuc(sucursal.getId()) // Encuentra productos por sucursal
-                        .sort((p1, p2) -> Integer.compare(p2.getStock(), p1.getStock())) // Ordena por stock descendente
-                        .next() // Obtiene el producto con más stock
+        return sucursalesRepository.findByFranquiciaid(franquiciaId) 
+                .flatMap(sucursal -> prodPorSucRepository.findByIdsuc(sucursal.getId())
+                        .sort((p1, p2) -> Integer.compare(p2.getStock(), p1.getStock()))
+                        .next() 
                 );
     }
 }

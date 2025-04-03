@@ -1,14 +1,12 @@
 package com.franquiciasApi.franquicias.services;
 
-
 import org.springframework.stereotype.Service;
-
 import lombok.RequiredArgsConstructor;
 import com.franquiciasApi.franquicias.repositories.iFranquiciasRepository;
-import com.franquiciasApi.franquicias.models.FranquiciasModel; // Import Product class
+import com.franquiciasApi.franquicias.models.FranquiciasModel; 
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux; // Import Flux
-import reactor.core.publisher.Mono; // Import Mono
+import reactor.core.publisher.Flux; 
+import reactor.core.publisher.Mono; 
 
 @Service
 @Slf4j

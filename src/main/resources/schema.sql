@@ -1,3 +1,4 @@
+CREATE SCHEMA IF NOT EXISTS `franquiciasdb_v3` ;
 
 CREATE TABLE IF NOT EXISTS `franquicias` (
   `idfranquicias` INT NOT NULL AUTO_INCREMENT,

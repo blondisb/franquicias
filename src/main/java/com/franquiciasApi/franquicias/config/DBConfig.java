@@ -19,13 +19,11 @@ public class DBConfig extends AbstractR2dbcConfiguration {
     @Value("${spring.r2dbc.url}")
     private String dbURL;
 
-    // precargar la url 
     @Override
     public ConnectionFactory connectionFactory() {
         return ConnectionFactories.get(dbURL);
     }
 
-    // Cargar script sql 
     @Bean
     public ConnectionFactoryInitializer initializer(ConnectionFactory connectionFactory) {
         ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();

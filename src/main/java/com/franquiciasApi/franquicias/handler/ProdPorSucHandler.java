@@ -49,29 +49,4 @@ public class ProdPorSucHandler {
                 .onErrorResume(e -> ServerResponse.badRequest().bodyValue("Error deleting products: " + e.getMessage()));
     }
 
-    // handler: respuesta del server para disminuir el stock de un products en una sucursal
-    public Mono<ServerResponse> decreaseStock(ServerRequest request) {
-        int id;
-        try {
-            id = Integer.parseInt(request.pathVariable("id"));
-        } catch (NumberFormatException e) {
-            return ServerResponse.badRequest().bodyValue("Invalid ID format");
-        }
-        int sucursalId;
-        try {
-            sucursalId = Integer.parseInt(request.pathVariable("sucursalId"));
-        } catch (NumberFormatException e) {
-            return ServerResponse.badRequest().bodyValue("Invalid sucursalId format");
-        }
-        int quantity;
-        try {
-            quantity = Integer.parseInt(request.pathVariable("quantity"));
-        } catch (NumberFormatException e) {
-            return ServerResponse.badRequest().bodyValue("Invalid quantity format");
-        }
-        return prodPorSucService.decreaseStock(id, sucursalId, quantity)
-                .then(ServerResponse.ok().build())
-                .onErrorResume(e -> ServerResponse.badRequest().bodyValue("Error decreasing stock: " + e.getMessage()));
-    }
-
 }

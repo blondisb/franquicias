@@ -18,11 +18,10 @@ public class MainRouter {
     private static final String PATH_SUCURSALES = "api/sucursales";
     private static final String PATH_PRODUCTOS = "api/productos";
     private static final String PATH_ADD_LOADOUT = "api/agregarinventario"; // Cambia esto si es necesario
-    private static final String PATH_DECREASE_LOADOUT = "api/disminuirinventario"; // Cambia esto si es necesario
     private static final String PATH_DELETE_LOADOUT = "api/eliminarinventario"; // Cambia esto si es necesario
     private static final String ID_PATH = "/{id}";
     private static final String PATH_SUCURSAL_ID = "/{sucursalId}";
-    private static final String PATH_QUANTITY = "/{quantity}"; // Cantidad de los productos a disminuir
+
     @Bean
     RouterFunction<ServerResponse> router(FranquiciasHandler franquiciasHandler, SucursalesHandler sucursalesHandler, ProductossHandler productosHandler, ProdPorSucHandler prodPorSucHandler) {
         return RouterFunctions.route()
@@ -45,7 +44,6 @@ public class MainRouter {
                 .DELETE(PATH_PRODUCTOS + ID_PATH, productosHandler::deleteProductsById) // Implement this method
                 // --
                 .POST(PATH_ADD_LOADOUT, prodPorSucHandler::saveOrUpdateProducto)
-                .PUT(PATH_DECREASE_LOADOUT + ID_PATH + PATH_QUANTITY, prodPorSucHandler::decreaseStock)
                 .DELETE(PATH_DELETE_LOADOUT + ID_PATH + PATH_SUCURSAL_ID, prodPorSucHandler::deleteLoadutByIds) //  ID_PATH (idProducto) + ID_PATH (idSucursal)
                 // --
                 .build();

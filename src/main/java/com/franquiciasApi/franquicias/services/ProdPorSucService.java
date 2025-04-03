@@ -56,19 +56,4 @@ public class ProdPorSucService {
                         .doOnSuccess(aVoid -> log.info("Deleted producto with id {} from sucursal {}", idProd, idSuc))
                         .doOnError(error -> log.error("Error deleting producto with id {} from sucursal {}: {}", idProd, idSuc, error.getMessage())));
     }
-
-    // para disminuir el stock de un producto en una sucursal:
-    public Mono<ProdPorSucModel> decreaseStock(int idProd, int idSuc, int cantidad) {
-        return prodPorSucRepository.findByIdProdAndIdSuc(idProd, idSuc)
-                .switchIfEmpty(Mono.error(new RuntimeException("Producto with id " + idProd + " in Sucursal " + idSuc + " not found")))
-                .flatMap(existingProducto -> {
-                    if (existingProducto.getStock() < cantidad) {
-                        return Mono.error(new RuntimeException("Insufficient stock for producto with id " + idProd + " in sucursal " + idSuc));
-                    }
-                    existingProducto.setStock(existingProducto.getStock() - cantidad);
-                    return prodPorSucRepository.save(existingProducto)
-                            .doOnNext(updatedProducto -> log.info("Decreased stock for Producto: {}", updatedProducto))
-                            .doOnError(error -> log.error("Error decreasing stock for producto: {}", error.getMessage()));
-                });
-    }
 }

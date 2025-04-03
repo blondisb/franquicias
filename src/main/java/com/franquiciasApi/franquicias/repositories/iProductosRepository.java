@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface iProductosRepository extends R2dbcRepository<ProductsModel, Integer> {
+public interface iProductosRepository extends ReactiveCrudRepository<ProductsModel, Integer> {
 
     Mono<ProductsModel> findByName(String name);
 

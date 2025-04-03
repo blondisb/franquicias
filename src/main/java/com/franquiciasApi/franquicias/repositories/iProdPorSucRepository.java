@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface iProdPorSucRepository extends R2dbcRepository<ProdPorSucModel, Integer> {
+public interface iProdPorSucRepository extends ReactiveCrudRepository<ProdPorSucModel, Integer> {
 
     Mono<ProdPorSucModel> findByIdProdAndIdSuc(Integer idProd, Integer idSuc);
     Flux<ProdPorSucModel> findByIdsuc(int idSuc);

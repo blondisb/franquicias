@@ -49,4 +49,21 @@ public class ProdPorSucHandler {
                 .onErrorResume(e -> ServerResponse.badRequest().bodyValue("Error deleting products: " + e.getMessage()));
     }
 
+
+    public Mono<ServerResponse> getMaxStockByFranquicia(ServerRequest request) {
+        int franquiciaId;
+        try {
+            franquiciaId = Integer.parseInt(request.pathVariable("id"));
+        } catch (NumberFormatException e) {
+            return ServerResponse.badRequest().bodyValue("Invalid franquicia ID format");
+        }
+    
+        return prodPorSucService.getMaxStockByFranquicia(franquiciaId)
+                .collectList()
+                .flatMap(result -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(result))
+                .onErrorResume(e -> ServerResponse.badRequest().bodyValue("Error retrieving max stock: " + e.getMessage()));
+    }
+
 }

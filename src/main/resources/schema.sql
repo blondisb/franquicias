@@ -11,13 +11,13 @@ CREATE TABLE IF NOT EXISTS `franquicias` (
   CREATE TABLE IF NOT EXISTS `sucursales` (
   `idsucursales` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `id_franquicia_tbs` int NOT NULL,
+  `franquiciaid` int NOT NULL,
   PRIMARY KEY (`idsucursales`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   UNIQUE KEY `idsucursales_UNIQUE` (`idsucursales`),
-  KEY `id_franquicia_fk_idx` (`id_franquicia_tbs`),
-  CONSTRAINT `id_franquicia_fk`
-    FOREIGN KEY (`id_franquicia_tbs`)
+  KEY `franquiciaid_fk_idx` (`franquiciaid`),
+  CONSTRAINT `franquiciaid_fk`
+    FOREIGN KEY (`franquiciaid`)
     REFERENCES `franquicias` (`idfranquicias`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION

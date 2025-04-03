@@ -21,6 +21,8 @@ public class MainRouter {
     private static final String PATH_DELETE_LOADOUT = "api/eliminarinventario"; // Cambia esto si es necesario
     private static final String ID_PATH = "/{id}";
     private static final String PATH_SUCURSAL_ID = "/{sucursalId}";
+    private static final String PATH_MAX_STOCK = "api/franquicias/{id}/max-stock";
+
 
     @Bean
     RouterFunction<ServerResponse> router(FranquiciasHandler franquiciasHandler, SucursalesHandler sucursalesHandler, ProductossHandler productosHandler, ProdPorSucHandler prodPorSucHandler) {
@@ -46,6 +48,7 @@ public class MainRouter {
                 .POST(PATH_ADD_LOADOUT, prodPorSucHandler::saveOrUpdateProducto)
                 .DELETE(PATH_DELETE_LOADOUT + ID_PATH + PATH_SUCURSAL_ID, prodPorSucHandler::deleteLoadutByIds) //  ID_PATH (idProducto) + ID_PATH (idSucursal)
                 // --
+                .GET(PATH_MAX_STOCK, prodPorSucHandler::getMaxStockByFranquicia)
                 .build();
     }
 }

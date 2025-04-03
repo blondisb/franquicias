@@ -56,4 +56,12 @@ public class ProdPorSucService {
                         .doOnSuccess(aVoid -> log.info("Deleted producto with id {} from sucursal {}", idProd, idSuc))
                         .doOnError(error -> log.error("Error deleting producto with id {} from sucursal {}: {}", idProd, idSuc, error.getMessage())));
     }
+
+    public Flux<ProdPorSucModel> getMaxStockByFranquicia(int franquiciaId) {
+        return sucursalesRepository.findByFranquiciaid(franquiciaId) // Encuentra todas las sucursales de la franquicia
+                .flatMap(sucursal -> prodPorSucRepository.findByIdsuc(sucursal.getId()) // Encuentra productos por sucursal
+                        .sort((p1, p2) -> Integer.compare(p2.getStock(), p1.getStock())) // Ordena por stock descendente
+                        .next() // Obtiene el producto con más stock
+                );
+    }
 }

@@ -14,7 +14,7 @@ public class SucursalesModel {
     private String name;
 
     @NonNull
-    private Integer id_franquicia_tbs; // Foreign key to the franquicias table
+    private Integer franquiciaid; // Foreign key to the franquicias table
 
     // Getters and setters
     public Integer getId() {
@@ -33,12 +33,12 @@ public class SucursalesModel {
         this.name = name;
     }
 
-    public Integer getId_franquicia_tbs() {
-        return id_franquicia_tbs;
+    public Integer getfranquiciaid() {
+        return franquiciaid;
     }
 
-    public void setId_franquicia_tbs(Integer id_franquicia_tbs) {
-        this.id_franquicia_tbs = id_franquicia_tbs;
+    public void setfranquiciaid(Integer franquiciaid) {
+        this.franquiciaid = franquiciaid;
     }
 
     // Method to update non-null fields from another Product instance

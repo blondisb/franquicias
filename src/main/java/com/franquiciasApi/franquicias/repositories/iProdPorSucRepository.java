@@ -3,6 +3,7 @@ package com.franquiciasApi.franquicias.repositories;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import com.franquiciasApi.franquicias.models.ProdPorSucModel;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,8 @@ public interface iProdPorSucRepository extends R2dbcRepository<ProdPorSucModel, 
     // For example, you can define a method to find products by name or price range.
 
     Mono<ProdPorSucModel> findByIdProdAndIdSuc(Integer idProd, Integer idSuc);
+    Flux<ProdPorSucModel> findByIdsuc(int idSuc);
+
 
 }
  

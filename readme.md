@@ -57,7 +57,7 @@ Este proyecto es una API desarrollada con Spring Boot y WebFlux para gestionar f
 }
 ```
 
-#### **Actualizar una franquicia**
+#### **Actualizar nombre de una franquicia**
 - **Método:** `PUT`
 - **URL:** `http://franquicias-acc-alb-1261943192.us-east-1.elb.amazonaws.com/api/franquicias/{id}`
 - **Descripción:** Actualiza una franquicia existente.
@@ -88,7 +88,7 @@ Este proyecto es una API desarrollada con Spring Boot y WebFlux para gestionar f
 }
 ```
 
-#### **Actualizar una sucursal**
+#### **Actualizar nombre de una sucursal**
 - **Método:** `PUT`
 - **URL:** `http://franquicias-acc-alb-1261943192.us-east-1.elb.amazonaws.com/api/sucursales/{id}`
 - **Descripción:** Actualiza una franquicia existente. Devuelve Id, Nombre y Franquicia de la sucursal.
@@ -117,7 +117,7 @@ Este proyecto es una API desarrollada con Spring Boot y WebFlux para gestionar f
 }
 ```
 
-#### **Actualizar una producto**
+#### **Actualizar nombre de una producto**
 - **Método:** `PUT`
 - **URL:** `http://franquicias-acc-alb-1261943192.us-east-1.elb.amazonaws.com/api/productos/{id}`
 - **Descripción:** Actualiza un producto existente. Devuelve Id y Nombre del producto.

@@ -1,7 +1,7 @@
 # Franquicias API
 
 Este proyecto es una API desarrollada con Spring Boot y WebFlux para gestionar franquicias, sucursales, productos y su inventario. Además, incluye una infraestructura en AWS definida con Terraform para desplegar la aplicación.
-
+![Franquicias API](./esquema.png)
 ## Tabla de Contenidos
 - [Endpoints](#endpoints)
 - [Infraestructura en AWS](#infraestructura-en-aws)
